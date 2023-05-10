@@ -2,7 +2,7 @@
 [org 0x7c00] ; tell the assembler that our offset is bootsector code
 
 ; chars are just arrays except in assembly theres no way to index except increasing the pointer adress
-; use bx for storing char
+; use ebx for storing char addr
 start:
     mov ebx, test; Get addr of test
     call println
@@ -25,6 +25,6 @@ nlret:
     int 0x10
     ret
 
-test: db "shid",0xa,0x0d,"came"
+test: db "shid",0xa,0x0d,"came",0xa,0x0d,"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" ; This why to just keep the address
 times 510-($-$$) db 0
 dw 0xaa55
